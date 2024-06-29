@@ -1,18 +1,17 @@
 // lib
-import 'dart:math';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 // Pages
 import 'package:main_project/components/sidebar_components/autocomplet_component.dart';
-import 'package:main_project/components/price_components/sales_record_widget.dart';
 
 // types
 import 'package:main_project/types/games_data.dart';
 
 // types def
 typedef IntCallback = void Function(int appId);
+
+
 
 class SideBar extends StatefulWidget {
   final IntCallback onGameSelection;
@@ -24,6 +23,7 @@ class SideBar extends StatefulWidget {
   @override
   State<SideBar> createState() => _SideBarState();
 }
+
 
 class _SideBarState extends State<SideBar> {
   bool isExtended = false;
@@ -47,7 +47,8 @@ class _SideBarState extends State<SideBar> {
     return AnimatedContainer(
       width: maxWidth,
       duration: const Duration(milliseconds: 200),
-      curve: Curves.easeOut,
+      curve: Curves.easeInOut,
+
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         image: const DecorationImage(
@@ -55,12 +56,13 @@ class _SideBarState extends State<SideBar> {
           fit: BoxFit.fitHeight,
         ),
       ),
+
       child: ElevatedButton(
         style: const ButtonStyle(
-          elevation: MaterialStatePropertyAll(0),
-          padding: MaterialStatePropertyAll(EdgeInsets.zero),
-          backgroundColor: MaterialStatePropertyAll(Colors.transparent),
-          overlayColor: MaterialStatePropertyAll(Colors.transparent),
+          elevation: WidgetStatePropertyAll(0),
+          padding: WidgetStatePropertyAll(EdgeInsets.zero),
+          backgroundColor: WidgetStatePropertyAll(Colors.transparent),
+          overlayColor: WidgetStatePropertyAll(Colors.transparent),
         ),
         onPressed: () {
           extend();

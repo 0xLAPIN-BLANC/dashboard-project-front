@@ -80,7 +80,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
 
     return Material(
-      color: const Color(0xff171717),
+      color: const Color(0xff010401),
 
       child: Container(
         padding: const EdgeInsets.all(15),

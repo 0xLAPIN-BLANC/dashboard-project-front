@@ -40,11 +40,11 @@ class _InfoComponentState extends State<InfoComponent> {
 
       areas:
       '''
-      Score Price Population Dlc
+      Score Price Time Dlc
       Score Action     Tags Tags
       ''',
 
-      columnSizes: [1.5.fr, 1.fr, 1.fr, 1.fr],
+      columnSizes: [1.2.fr, 1.fr, 1.fr, 1.fr],
       rowSizes: [1.fr, 1.fr],
 
       columnGap: 10,
@@ -55,7 +55,7 @@ class _InfoComponentState extends State<InfoComponent> {
 
         PriceWidget(gameData: widget.gameData, spaceBetweenValueUnity: spaceBetweenValueUnite).inGridArea("Price"),
         ReviewWidget(gameData: widget.gameData,).inGridArea("Score"),
-        PopulationWidget(gameData: widget.gameData).inGridArea("Population"),
+        TimeLenWidget(gameData: widget.gameData, spaceBetweenValueUnity: spaceBetweenValueUnite).inGridArea('Time'),
         ActionWidget(gameId: widget.gameId,).inGridArea("Action"),
         DlcWidget(gameData: widget.gameData, spaceBetweenValueUnity: spaceBetweenValueUnite).inGridArea("Dlc"),
         const TagsWidget().inGridArea("Tags")
