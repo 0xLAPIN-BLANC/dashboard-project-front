@@ -27,10 +27,13 @@ class ReviewWidget extends StatelessWidget {
         text: "Review",
       ),
 
-      child: SizedBox(
-        height: double.maxFinite,
-        width: double.maxFinite,
-        child: ScoreGauge(value: gameData.review),
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: SizedBox(
+          height: double.maxFinite,
+          width: double.maxFinite,
+          child: ScoreGauge(value: gameData.review),
+        ),
       ),
     );
   }

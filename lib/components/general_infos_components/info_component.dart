@@ -31,7 +31,7 @@ class InfoComponent extends StatefulWidget {
 
 class _InfoComponentState extends State<InfoComponent> {
 
-  final double spaceBetweenValueUnity = 10;
+  final double spaceBetweenValueUnite = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +40,11 @@ class _InfoComponentState extends State<InfoComponent> {
 
       areas:
       '''
-      Price Population Dlc  Time
+      Score Price Population Dlc
       Score Action     Tags Tags
       ''',
 
-      columnSizes: [1.fr, 1.fr, 1.fr, 1.fr],
+      columnSizes: [1.5.fr, 1.fr, 1.fr, 1.fr],
       rowSizes: [1.fr, 1.fr],
 
       columnGap: 10,
@@ -53,12 +53,11 @@ class _InfoComponentState extends State<InfoComponent> {
 
       children: [
 
-        PriceWidget(gameData: widget.gameData, spaceBetweenValueUnity: spaceBetweenValueUnity).inGridArea("Price"),
+        PriceWidget(gameData: widget.gameData, spaceBetweenValueUnity: spaceBetweenValueUnite).inGridArea("Price"),
         ReviewWidget(gameData: widget.gameData,).inGridArea("Score"),
         PopulationWidget(gameData: widget.gameData).inGridArea("Population"),
         ActionWidget(gameId: widget.gameId,).inGridArea("Action"),
-        DlcWidget(gameData: widget.gameData, spaceBetweenValueUnity: spaceBetweenValueUnity).inGridArea("Dlc"),
-        TimeLenWidget(gameData: widget.gameData, spaceBetweenValueUnity: spaceBetweenValueUnity).inGridArea("Time"),
+        DlcWidget(gameData: widget.gameData, spaceBetweenValueUnity: spaceBetweenValueUnite).inGridArea("Dlc"),
         const TagsWidget().inGridArea("Tags")
 
       ],

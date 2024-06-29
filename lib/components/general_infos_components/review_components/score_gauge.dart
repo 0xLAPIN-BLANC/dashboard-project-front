@@ -7,8 +7,8 @@ import 'package:gauge_indicator/gauge_indicator.dart';
 class ScoreGauge extends StatelessWidget {
   final double value;
 
-  final double fontsizeScaleFactor = 0.03;
-  final double thicknessScaleFactor = 0.010;
+  final double fontsizeScaleFactor = 0.06;
+  final double thicknessScaleFactor = 0.020;
 
   const ScoreGauge({this.value=0, super.key});
 
@@ -33,11 +33,11 @@ class ScoreGauge extends StatelessWidget {
           degrees: 230,
 
           pointer: TrianglePointer(
-            width: 25,
-            height: 25,
+            width: 35,
+            height: 35,
             color: value < 50 ? Colors.red : value < 75 ? Colors.orange : Colors.green,
             borderRadius: 100,
-            position: const GaugePointerPosition(offset: Offset(0, -4))
+            position: const GaugePointerPosition(offset: Offset(0, -5.5))
           ),
 
           style: GaugeAxisStyle(
