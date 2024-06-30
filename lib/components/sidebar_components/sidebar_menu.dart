@@ -44,102 +44,134 @@ class _SideBarState extends State<SideBar> {
     int nbrLines = nbrOfGames != 0 ? (nbrOfGames > maxNbrLinesPossible ? maxNbrLinesPossible : nbrOfGames) : 1;
     //List<IntrinsicContentTrackSize> rowSizes = List.filled(nbrLines, 1.fr);
 
-    return AnimatedContainer(
-      width: maxWidth,
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeInOut,
+    return GestureDetector(
+      onTap: extend,
 
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        image: const DecorationImage(
-          image: AssetImage('images/Liquid-Bg-Green.jpg'),
-          fit: BoxFit.fitHeight,
-        ),
-      ),
+      child: AnimatedContainer(
+        width: maxWidth,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOut,
 
-      child: ElevatedButton(
-        style: const ButtonStyle(
-          elevation: WidgetStatePropertyAll(0),
-          padding: WidgetStatePropertyAll(EdgeInsets.zero),
-          backgroundColor: WidgetStatePropertyAll(Colors.transparent),
-          overlayColor: WidgetStatePropertyAll(Colors.transparent),
-        ),
-        onPressed: () {
-          extend();
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 10),
-          child: LayoutGrid(
+        child: LayoutGrid(
+          columnSizes: [1.fr],
+          rowSizes: [70.px, 1.fr],
 
-            columnSizes: [1.fr],
-            rowSizes: [auto, 1.fr],
+          rowGap: 20,
 
-            rowGap: 100,
+          children: [
 
-            children: [
-              if (isExtended)
-                AutocompleteWidget(
-                  nameOptions: nameOptions,
-                  onGameSelection: widget.onGameSelection,
-                )
-              else
-                Container(
-                    width: double.maxFinite,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: ElevatedButton(
-                          style: const ButtonStyle(
-                            elevation: MaterialStatePropertyAll(0),
-                            padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                            backgroundColor: MaterialStatePropertyAll(Colors.transparent),
-                            overlayColor: MaterialStatePropertyAll(Colors.transparent),
-                          ),
-                          onPressed: extend,
-                          child: const Icon(Icons.search,color: Colors.black,)
-                      ),
-                    )
+            Container(
+              width: double.maxFinite,
+              height: double.maxFinite,
+
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(1000),
+                  color: const Color(0xff0F3D2F)
+              ),
+
+              child: Container(
+                margin: const EdgeInsets.all(15),
+
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(1000)
                 ),
 
-              // MAXIME PART !!!
-              LayoutGrid(
-                columnSizes: [1.fr],
-                rowSizes: List.filled(nbrLines, 1.fr),
-                rowGap: 10,
-
-                children: List<Widget>.generate(nbrLines, (int index) => AnimatedIconButton(isExtended: isExtended,icon: Icons.add,color: Colors.black,data: widget.gamesData.isNotEmpty?widget.gamesData[index].name: "", appId: index, onPressedCallback: widget.onGameSelection)), // Empty initially
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 7.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Icon(Icons.search, color: Colors.black,)
+                  ),
+                ),
               )
-            ],
-          ),
+            ),
+
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: const Color(0xff0D1612)
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-// Column(
-// mainAxisAlignment: MainAxisAlignment.spaceBetween,
-// children: [
-//
-//
-//
-// Column(
-// children: [
-// AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: widget.gamesData.isNotEmpty?widget.gamesData[0].name:"",appId: 0, onPressedCallback: widget.onButtonSelection),
-// AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: widget.gamesData.isNotEmpty?widget.gamesData[1].name:"", appId: 1, onPressedCallback: widget.onButtonSelection),
-// AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: widget.gamesData.isNotEmpty?widget.gamesData[2].name:"", appId: 2, onPressedCallback: widget.onButtonSelection),
-// AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: widget.gamesData.isNotEmpty?widget.gamesData[3].name:"", appId: 3, onPressedCallback: widget.onButtonSelection),
-// AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: widget.gamesData.isNotEmpty?widget.gamesData[4].name:"", appId: 4, onPressedCallback: widget.onButtonSelection),
-// ],
+
+
+
+// image: const DecorationImage(
+//   image: AssetImage('images/Liquid-Bg-Green.jpg'),
+//   fit: BoxFit.cover,
 // ),
+
+
+
+// ElevatedButton(
+//   style: const ButtonStyle(
+//     elevation: WidgetStatePropertyAll(0),
+//     padding: WidgetStatePropertyAll(EdgeInsets.zero),
+//     backgroundColor: WidgetStatePropertyAll(Colors.transparent),
+//     overlayColor: WidgetStatePropertyAll(Colors.transparent),
+//   ),
+//   onPressed: () {
+//     extend();
+//   },
+//   child: Padding(
+//     padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 10),
+//     child: LayoutGrid(
 //
-// ExtendButton(isExtended: isExtended, onPressedExtendedButton: () { extend(); })
-// ],
+//       columnSizes: [1.fr],
+//       rowSizes: [auto, 1.fr],
+//
+//       rowGap: 100,
+//
+//       children: [
+//         if (isExtended)
+//           AutocompleteWidget(
+//             nameOptions: nameOptions,
+//             onGameSelection: widget.onGameSelection,
+//           )
+//         else
+//           Container(
+//               width: double.maxFinite,
+//               height: 50,
+//               decoration: BoxDecoration(
+//                 color: Colors.white,
+//                 borderRadius: BorderRadius.circular(100),
+//               ),
+//               child: Align(
+//                 alignment: Alignment.centerLeft,
+//                 child: ElevatedButton(
+//                     style: const ButtonStyle(
+//                       elevation: MaterialStatePropertyAll(0),
+//                       padding: MaterialStatePropertyAll(EdgeInsets.zero),
+//                       backgroundColor: MaterialStatePropertyAll(Colors.transparent),
+//                       overlayColor: MaterialStatePropertyAll(Colors.transparent),
+//                     ),
+//                     onPressed: extend,
+//                     child: const Icon(Icons.search,color: Colors.black,)
+//                 ),
+//               )
+//           ),
+//
+//         // MAXIME PART !!!
+//         LayoutGrid(
+//           columnSizes: [1.fr],
+//           rowSizes: List.filled(nbrLines, 1.fr),
+//           rowGap: 10,
+//
+//           children: List<Widget>.generate(nbrLines, (int index) => AnimatedIconButton(isExtended: isExtended,icon: Icons.add,color: Colors.black,data: widget.gamesData.isNotEmpty?widget.gamesData[index].name: "", appId: index, onPressedCallback: widget.onGameSelection)), // Empty initially
+//         )
+//       ],
+//     ),
+//   ),
 // ),
+
+
 
 class ExtendButton extends StatelessWidget {
   final bool isExtended;
@@ -156,10 +188,10 @@ class ExtendButton extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: ElevatedButton(
         style: const ButtonStyle(
-            fixedSize: MaterialStatePropertyAll(Size.square(45)),
-            padding: MaterialStatePropertyAll(EdgeInsets.zero),
-            backgroundColor: MaterialStatePropertyAll(Colors.white),
-            shape: MaterialStatePropertyAll(CircleBorder())),
+            fixedSize: WidgetStatePropertyAll(Size.square(45)),
+            padding: WidgetStatePropertyAll(EdgeInsets.zero),
+            backgroundColor: WidgetStatePropertyAll(Colors.white),
+            shape: WidgetStatePropertyAll(CircleBorder())),
         onPressed: onPressedExtendedButton,
         child: Icon(isExtended ? Icons.arrow_back : Icons.arrow_forward,
             color: Colors.black),

@@ -17,7 +17,7 @@ class LayoutComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color(0xff101210),
+      color: const Color(0xff0D1612),
 
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),
